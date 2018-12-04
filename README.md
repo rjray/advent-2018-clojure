@@ -2,7 +2,7 @@
 
 This is my code for the 2018 [Advent of Code](https://adventofcode.com/2018), all solutions in [Clojure](https://clojure.org/).
 
---I will only push code on (or after) December 26, after the challenge has completed.--
+~~I will only push code on (or after) December 26, after the challenge has completed.~~
 
 Since everyone else seems to be committing their solutions as they write them, so will I...
 
