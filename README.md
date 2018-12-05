@@ -1,4 +1,4 @@
-# advent-2018
+# advent-2018-clojure
 
 This is my code for the 2018 [Advent of Code](https://adventofcode.com/2018), all solutions in [Clojure](https://clojure.org/).
 
