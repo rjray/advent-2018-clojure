@@ -1,6 +1,5 @@
 (ns advent-2018.day07
   (:require [clojure.java.io :as io]
-            [clojure.string :as str]
             [clojure.set :as set]))
 
 ;;; https://adventofcode.com/2018/day/7
