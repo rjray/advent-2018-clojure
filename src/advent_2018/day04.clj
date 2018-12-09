@@ -29,7 +29,7 @@
       (= type "Guard") (assoc event
                               :type  "START"
                               :guard (Integer/parseInt
-                                      (apply str (rest id))))
+                                      (str/join (rest id))))
       :else            (throw (Exception. (str "Unknown line type: " type))))))
 
 ;; Wrapper to convert all lines to a seq of event structures:

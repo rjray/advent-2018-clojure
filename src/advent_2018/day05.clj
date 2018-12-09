@@ -12,7 +12,7 @@
       (cond
         (nil? c)                     (apply str (reverse res))
         (nil? r)                     (recur p (cons c res))
-        (and (not (= c r))
+        (and (not= c r)
              (= (str/upper-case c)
                 (str/upper-case r))) (recur p (rest res))
         :else                        (recur p (cons c res))))))
@@ -36,7 +36,7 @@
 ;; ASCII value for the upper-case.
 (defn- drop-units [p code]
   (let [uc (char code), lc (char (+ code 32))]
-    (filter #(not (= lc %)) (filter #(not (= uc %)) p))))
+    (filter #(not= lc %) (filter #(not= uc %) p))))
 
 ;; Get the reduced version of the polymer "p" after all units identified
 ;; by "code" have been removed.

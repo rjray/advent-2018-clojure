@@ -1,5 +1,6 @@
 (ns advent-2018.day02
-  (:require [clojure.math.combinatorics :as comb]))
+  (:require [clojure.math.combinatorics :as comb]
+            [clojure.string :as str]))
 
 ;;; https://adventofcode.com/2018/day/2
 
@@ -40,12 +41,12 @@
 
 ;; Do the two given IDs differ by exactly one character in the same place?
 (defn- differ-by-one? [[id1 id2]]
-  (= 1 (count (filter #(= false %) (map #(= %1 %2) id1 id2)))))
+  (= 1 (count (filter false? (map = id1 id2)))))
 
 ;; Given two IDs, return the string made up of all letters that match in the
 ;; same position.
 (defn- matching-letters [[id1 id2]]
-  (apply str (map #(if (= %1 %2) %1 "") id1 id2)))
+  (str/join (map #(if (= %1 %2) %1 "") id1 id2)))
 
 ;; Each line of "file" is a 26-character ID string. Find the pair in which the
 ;; IDs differ by exactly one character (in the same place). Return the string

@@ -25,8 +25,8 @@
 ;; Determine the needed max-size for the field (which is square), based on the
 ;; list of claims. Minimum is 1000, per the problem definition.
 (defn- get-max-size [claims]
-  (max (apply max (map #(- (+ (:left %) (:width %)) 1) claims))
-       (apply max (map #(- (+ (:top %) (:height %)) 1) claims))
+  (max (apply max (map #(dec (+ (:left %) (:width %))) claims))
+       (apply max (map #(dec (+ (:top %) (:height %))) claims))
        1000))
 
 ;; Create a matrix of size x size using vectors, for faster access.
