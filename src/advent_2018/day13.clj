@@ -146,7 +146,7 @@
   (loop [tick 0, carts carts]
     (let [new-tick    (inc tick)
           [new-carts] (move-carts carts field)
-          live-carts  (filter #(not (= (:dir %) \X)) new-carts)]
+          live-carts  (filter #(not= (:dir %) \X) new-carts)]
       (cond
         (= 1 (count live-carts)) (first live-carts)
         :else                    (recur new-tick new-carts)))))
