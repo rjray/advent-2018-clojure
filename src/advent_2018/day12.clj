@@ -1,6 +1,5 @@
 (ns advent-2018.day12
-  (:require [clojure.java.io :as io]
-            [clojure.string :as str]))
+  (:require [clojure.java.io :as io]))
 
 ;;; https://adventofcode.com/2018/day/12
 
@@ -32,7 +31,7 @@
 ;; be used to look up the transistion rule for the pot at i.
 (defn- pots-at [state i max]
   (map #(cond
-          (or (< % 0)
+          (or (neg? %)
               (>= % max)) \.
           :else           (state %))
        (range (- i 2) (+ i 3))))
