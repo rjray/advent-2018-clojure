@@ -1,5 +1,4 @@
-(ns advent-2018.day14
-  (:require [clojure.string :as str]))
+(ns advent-2018.day14)
 
 ;;; https://adventofcode.com/2018/day/14
 
