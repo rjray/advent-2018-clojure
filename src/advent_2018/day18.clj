@@ -1,7 +1,6 @@
 (ns advent-2018.day18
   (:require [clojure.java.io :as io]
-            [clojure.string :as str]
-            [clojure.pprint :refer [pprint]]))
+            [clojure.string :as str]))
 
 ;;; https://adventofcode.com/2018/day/18
 
