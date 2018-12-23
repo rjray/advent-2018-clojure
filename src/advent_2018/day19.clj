@@ -65,7 +65,7 @@
           :else
           (recur lines ip
                  (conj program
-                       (conj (vec (cons inst nums)) ip))))))))
+                       (conj (vec (cons (opcodes inst) nums)) ip))))))))
 
 ;; Optimization of the loop in lines 3-11 of the "program". Without this, p02
 ;; is prohibitively long to run.
@@ -85,7 +85,7 @@
           (let [command (program ip)
                 result  (if (= ip 3)
                           (ip-3-loop command registers ipr)
-                          ((opcodes (first command)) command registers))
+                          ((first command) command registers))
                 newip   (result ipr)]
             ;;(printf "ip=%2d %s %s %s\n" ip registers command result)
             (recur (last command) (assoc result ipr (inc newip)))))))))

@@ -39,40 +39,25 @@
 ;;; The opcodes for the "machine".
 
 (defn- op-addr [[o A B C] rs] (assoc rs C (+ (rs A) (rs B))))
-
 (defn- op-addi [[o A B C] rs] (assoc rs C (+ (rs A) B)))
-
 (defn- op-mulr [[o A B C] rs] (assoc rs C (* (rs A) (rs B))))
-
 (defn- op-muli [[o A B C] rs] (assoc rs C (* (rs A) B)))
-
 (defn- op-banr [[o A B C] rs] (assoc rs C (bit-and (rs A) (rs B))))
-
 (defn- op-bani [[o A B C] rs] (assoc rs C (bit-and (rs A) B)))
-
 (defn- op-borr [[o A B C] rs] (assoc rs C (bit-or (rs A) (rs B))))
-
 (defn- op-bori [[o A B C] rs] (assoc rs C (bit-or (rs A) B)))
-
 (defn- op-setr [[o A B C] rs] (assoc rs C (rs A)))
-
 (defn- op-seti [[o A B C] rs] (assoc rs C A))
-
 (defn- op-gtir [[o A B C] rs] (assoc rs C (if (> A (rs B)) 1 0)))
-
 (defn- op-gtri [[o A B C] rs] (assoc rs C (if (> (rs A) B) 1 0)))
-
 (defn- op-gtrr [[o A B C] rs] (assoc rs C (if (> (rs A) (rs B)) 1 0)))
-
 (defn- op-eqir [[o A B C] rs] (assoc rs C (if (= A (rs B)) 1 0)))
-
 (defn- op-eqri [[o A B C] rs] (assoc rs C (if (= (rs A) B) 1 0)))
-
 (defn- op-eqrr [[o A B C] rs] (assoc rs C (if (= (rs A) (rs B)) 1 0)))
 
 ;;; End of opcodes
 
-;; A list (thus iterable) of all the opcodes.
+;; A map of opcode names to the above functions.
 (def ^:private opcodes {"addr" op-addr
                         "addi" op-addi
                         "mulr" op-mulr
