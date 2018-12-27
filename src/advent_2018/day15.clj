@@ -93,7 +93,7 @@
              edges  (a*-edges map width height closed coord)
              open   (reduce
                      (fn [open edge]
-                       (if (not (contains? open edge))
+                       (if-not (contains? open edge)
                          (assoc open edge [(a*-cost edge end prevg) coord])
                          (let [[[_ pg] _] (open edge)
                                [nf ng nh] (a*-cost edge end prevg)]
@@ -165,8 +165,7 @@
       (pos? t-hp) (list field
                         (assoc-in people [t-id :hp] t-hp))
       :else       (list (assoc-in field [(:y t) (:x t)] \.)
-                        (assoc people t-id (assoc (people t-id)
-                                                  :hp 0 :alive false))))))
+                        (update-in people [t-id] assoc :hp 0 :alive false)))))
 
 ;; Get the viable square coordinates around pos. These are those whose value
 ;; causes f to return true. If there are none, return an empty list.
@@ -221,12 +220,12 @@
       ;; If there are no targets, no one needs to move
       (empty? targets) (list p field people)
       :else
-      (let [structs  (apply concat (map #(dist-to-target p % field) targets))
+      (let [structs  (mapcat #(dist-to-target p % field) targets)
             structs  (sort-by :dist (reading-order structs))
             target   (first structs)
             bestpath (preferred-path p target field)
             step     (first (:path bestpath))
-            p'       (if (nil? step) nil (move p step))]
+            p'       (when-not (nil? step) (move p step))]
         (cond
           (nil? p') (list p field people)
           :else     (list p'

@@ -100,8 +100,8 @@
   (let [[sl temp] (spread-dir pos "LEFT" clay still #{})
         [sr temp] (spread-dir pos "RIGHT" clay still temp)]
     (list sl sr
-          (if (or sl sr)       (set/union flowing temp) flowing)
-          (if (not (or sl sr)) (set/union still temp) still))))
+          (if (or sl sr)     (set/union flowing temp) flowing)
+          (if-not (or sl sr) (set/union still temp) still))))
 
 ;; Handle all the coordinates in the spreading set. For each, call the spread
 ;; fn above. At the end, the spreading set should be empty and any of the other
