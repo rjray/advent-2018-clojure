@@ -2,9 +2,11 @@
 
 This is my code for the 2018 [Advent of Code](https://adventofcode.com/2018), all solutions in [Clojure](https://clojure.org/).
 
-~~I will only push code on (or after) December 26, after the challenge has completed.~~
+All code is under the `src` directory. Each solution-file is named `dayNN.clj` and contains both puzzle solutions for that day. These are the publically-facing functions `p01` and `p02`.
 
-Since everyone else seems to be committing their solutions as they write them, so will I...
+The `data` directory contains the input data for each day. These files are prefixed with the day number, i.e., `NN_something.txt` where `NN` is the day number and the rest is a (semi-)descriptive name. There were no data-files for days 11 and 14.
+
+There is one additional file under the `src` directory: `heap.clj`. This is an implementation of a heap data structure that can act as either a min-heap or max-heap. It is based on code I wrote for the Algorithms Specialization at Coursera in early 2018.
 
 ## Usage
 
@@ -14,7 +16,7 @@ This project is managed with [Leiningen](https://leiningen.org/). Running the fo
 lein repl
 ```
 
-If/when I set up a more "unified" runner-framework around the problems, I'll document that here.
+I never got around to any sort of generic/unified interface to the various days.
 
 ## License
 
